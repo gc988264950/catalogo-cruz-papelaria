@@ -108,11 +108,25 @@ section.cat:nth-of-type(even){background:#fff}
   display:flex;flex-direction:column;transition:transform .18s, box-shadow .18s;position:relative;overflow:hidden}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--rose-400),var(--rose-600));z-index:2}
-.card__photo{margin:-22px -22px 0;height:200px;overflow:hidden;background:var(--rose-50);position:relative}
-.card__photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-.card:hover .card__photo img{transform:scale(1.04)}
-.card__photo::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(to top,rgba(17,17,17,.12),transparent)}
+.card__photo{margin:-22px -22px 0;height:230px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--rose-50),var(--rose-100));border-bottom:1px solid var(--line)}
+.card__photo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transition:transform .4s ease}
+.card:hover .card__photo img{transform:scale(1.03)}
 .card.has-photo .top{margin-top:18px}
+/* lista de novidades (sem foto) */
+.pricelist{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.pricelist .pl-row{display:flex;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid #f2eef0}
+.pricelist .pl-row:last-child{border-bottom:0}
+.pricelist .pl-row:hover{background:var(--rose-50)}
+.pricelist .pl-main{flex:1 1 auto;min-width:0}
+.pricelist .pl-name{font-size:16px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pricelist .pl-name .badge.new{font-size:9.5px;padding:3px 8px}
+.pricelist .pl-desc{font-size:13px;color:var(--ink-muted);margin-top:3px}
+.pricelist .pl-price{flex:0 0 auto;text-align:right;white-space:nowrap}
+.pricelist .pl-price .from{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-subtle)}
+.pricelist .pl-price .amt{font-family:var(--font-display);font-size:21px;font-weight:700;color:var(--accent-dark)}
+.pricelist .pl-price .unit{font-size:12px;color:var(--ink-muted);font-weight:600}
+@media(max-width:560px){.pricelist .pl-row{flex-wrap:wrap;gap:6px}.pricelist .pl-price{text-align:left}}
 .card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:4px}
 .card h3{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.15}
 .card .sub{font-size:13px;color:var(--ink-muted);margin-top:5px;line-height:1.4}
@@ -404,8 +418,7 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
     </div>
     <div class="grid">
 
-      <div class="card has-photo">
-        <div class="card__photo"><img src="img/polaroides.jpg" alt="Fotos impressas em papel fotográfico" loading="lazy"></div>
+      <div class="card">
         <div class="top"><h3>Papel Fotográfico A4</h3></div>
         <div class="sub">Glossy 180g · Frente · Tinta corante · Borda branca 5mm</div>
         <div class="rows">
@@ -749,8 +762,7 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
         </div>
       </div>
 
-      <div class="card has-photo">
-        <div class="card__photo"><img src="img/copo.jpg" alt="Copo personalizado" loading="lazy"></div>
+      <div class="card">
         <div class="top"><h3>Copo Twister 300ml</h3></div>
         <div class="sub">Com tampa · Branco / Transparente</div>
         <div class="rows cols2">
@@ -860,7 +872,14 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
     <div class="grid">
 
       <div class="card has-photo">
-        <div class="card__photo"><img src="img/chaveiros.jpg" alt="Chaveiros personalizados com foto" loading="lazy"></div>
+        <div class="card__photo"><img src="img/chaveiros.jpg" alt="Chaveiro personalizado com foto" loading="lazy"></div>
+        <div class="top"><h3>Chaveiro Personalizado</h3><span class="badge hot">Mais vendido</span></div>
+        <div class="sub">Acrílico com foto, nome ou frase · vários formatos</div>
+        <div class="spec"><span>Foto</span><span>Nome</span><span>Lembrancinhas</span><span>Datas</span></div>
+        <div class="bigprice"><span class="from">apenas</span><span class="amt">R$ 5,00</span></div>
+      </div>
+
+      <div class="card">
         <div class="top"><h3>Bottons de Chaveiro</h3><span class="badge sub">Atelié Doce Dupla</span></div>
         <div class="sub">Chaveiro · Abridor de garrafa · Botton com espelho</div>
         <div class="spec"><span>Aniversário</span><span>Casamento</span><span>Profissões</span><span>Lembrancinhas</span></div>
@@ -892,68 +911,78 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
         </div>
       </div>
     </div>
-    <div class="grid">
+    <div class="pricelist">
 
-      <div class="card">
-        <div class="top"><h3>Adesivos em Cartela</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Kiss-cut · stickers personalizados em cartela A4/A5</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 12,90</span><span class="unit">/cartela</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Caneca Mágica <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Revela a foto com a bebida quente · sublimação</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 39,90</span></div>
       </div>
 
-      <div class="card">
-        <div class="top"><h3>Convites & Papelaria de Festa</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Convites, tags, rótulos e toppers no mesmo tema</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 1,90</span><span class="unit">/un.</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Adesivos em Cartela <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Kiss-cut · stickers personalizados em cartela A4/A5</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 12,90</span><span class="unit"> /cartela</span></div>
       </div>
 
-      <div class="card">
-        <div class="top"><h3>Topo de Bolo Personalizado</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Papel ou acrílico · nome e tema da festa</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 14,90</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Convites & Papelaria de Festa <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Convites, tags, rótulos e toppers no mesmo tema</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 1,90</span><span class="unit"> /un.</span></div>
       </div>
 
-      <div class="card">
-        <div class="top"><h3>Caderno & Planner Personalizado</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Capa com seu nome, frase ou foto</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 29,90</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Topo de Bolo Personalizado <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Papel ou acrílico · nome e tema da festa</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 14,90</span></div>
       </div>
 
-      <div class="card">
-        <div class="top"><h3>Ímã de Geladeira</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Fotos e lembrancinhas · vários formatos</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 3,90</span><span class="unit">/un.</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Caderno & Planner Personalizado <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Capa com seu nome, frase ou foto</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 29,90</span></div>
       </div>
 
-      <div class="card has-photo">
-        <div class="card__photo"><img src="img/chaveiros.jpg" alt="Chaveiro acrílico com foto" loading="lazy"></div>
-        <div class="top"><h3>Chaveiro Acrílico Personalizado</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Foto ou nome · acrílico cristal resistente</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 9,90</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Ímã de Geladeira <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Fotos e lembrancinhas · vários formatos</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 3,90</span><span class="unit"> /un.</span></div>
       </div>
 
-      <div class="card has-photo">
-        <div class="card__photo"><img src="img/caneca-magica.png" alt="Caneca mágica personalizada" loading="lazy"></div>
-        <div class="top"><h3>Caneca Mágica</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Revela a foto com a bebida quente · sublimação</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 39,90</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Quadro / Pôster Decorativo A4 <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Frase ou foto · papel fotográfico premium</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 9,90</span></div>
       </div>
 
-      <div class="card">
-        <div class="top"><h3>Quadro / Pôster Decorativo A4</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Frase ou foto · papel fotográfico premium</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 9,90</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Cartão de Fidelidade <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Couché · ideal para o seu comércio fidelizar</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 0,49</span><span class="unit"> /un.</span></div>
       </div>
 
-      <div class="card">
-        <div class="top"><h3>Cartão de Fidelidade</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Couché · ideal para o seu comércio fidelizar</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 0,49</span><span class="unit">/un.</span></div>
-      </div>
-
-      <div class="card">
-        <div class="top"><h3>Arte / Diagramação</h3><span class="badge new">Novo</span></div>
-        <div class="sub">Criamos a arte do seu cartão, panfleto ou convite</div>
-        <div class="bigprice"><span class="from">a partir de</span><span class="amt">R$ 24,90</span></div>
+      <div class="pl-row">
+        <div class="pl-main">
+          <div class="pl-name">Arte / Diagramação <span class="badge new">Novo</span></div>
+          <div class="pl-desc">Criamos a arte do seu cartão, panfleto ou convite</div>
+        </div>
+        <div class="pl-price"><span class="from">a partir de</span><span class="amt">R$ 24,90</span></div>
       </div>
 
     </div>
