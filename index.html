@@ -210,23 +210,53 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
   header.site{ position:static; box-shadow:none; }
   body{ background:#fff; }
 
-  /* ===== GRID 2 COLUNAS QUE PREENCHE CADA FOLHA ===== */
-  .hero{ break-after:avoid; page-break-after:avoid; }
-  .hero .container{ padding-block:22px 16px; }
-  section.cat{ break-before:auto; page-break-before:auto; padding:6mm 0 0; }
-  section.cat:first-of-type{ padding-top:2mm; }
-  .cta{ break-before:auto; }
+  /* ===== CADA CATEGORIA = BLOCO INDIVISÍVEL ===== */
+  .hero{ break-after:auto; }
+  .hero .container{ padding-block:20px 14px; }
 
-  /* cabeçalho da categoria nunca fica sozinho no rodapé */
-  .cat-head{ break-inside:avoid; page-break-inside:avoid; break-after:avoid; page-break-after:avoid; margin-bottom:12px; }
+  /* a categoria inteira (ícone+número+nome+descrição+cards) nunca se parte:
+     se não couber na página, vai inteira para a próxima */
+  section.cat{
+    break-inside:avoid; page-break-inside:avoid;
+    break-before:auto; margin-top:11mm; padding:0;
+  }
+  section.cat:first-of-type{ margin-top:6mm; }
+  .cta{ break-before:page; page-break-before:always; break-inside:avoid; }
 
-  /* 2 colunas em todas as categorias, compactas */
-  .grid, .grid.two{ display:grid; grid-template-columns:1fr 1fr; gap:11px; }
-  .card{ break-inside:avoid; page-break-inside:avoid; box-shadow:none !important; padding:16px; }
-  .matrix,.cta{ break-inside:avoid; page-break-inside:avoid; }
-  /* lista de novidades flui por linha, enchendo a folha */
-  .pricelist{ break-inside:auto; }
-  .pricelist .pl-row{ break-inside:avoid; page-break-inside:avoid; padding:13px 18px; }
+  /* cabeçalho compacto, sempre junto dos cards */
+  .cat-head{ break-inside:avoid; page-break-inside:avoid; break-after:avoid; page-break-after:avoid; margin-bottom:13px; }
+  .cat-head__rule{ margin-bottom:12px; }
+  .cat-icon{ width:46px; height:46px; }
+  .cat-icon svg{ width:23px; height:23px; }
+  .cat-head h2{ font-size:24px; }
+  .cat-head p{ font-size:12.5px; margin-top:5px; }
+
+  /* 2 colunas alinhadas, bem compactas para caber a categoria inteira */
+  .grid, .grid.two{ display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:start; }
+  .card{ break-inside:avoid; page-break-inside:avoid; box-shadow:none !important; padding:13px 14px; border-radius:14px; }
+  .card::before{ height:3px; }
+  .card h3{ font-size:15.5px; }
+  .card .sub{ font-size:11px; margin-top:3px; line-height:1.35; }
+  .card .rows{ margin-top:8px; padding-top:8px; }
+  .rows.cols2{ gap:0 16px; }
+  .row{ padding:3.5px 0; }
+  .row .lbl{ font-size:11.5px; }
+  .row .val{ font-size:12.5px; }
+  .group-title{ padding:6px 0 2px; font-size:10px; }
+  .bigprice{ margin-top:8px; padding-top:8px; }
+  .bigprice .amt{ font-size:21px; }
+  .bigprice .from{ font-size:11px; }
+  .spec{ margin:6px 0 1px; }
+  .spec span{ padding:3px 7px; font-size:10.5px; }
+  .note{ padding:6px 9px; font-size:10.5px; margin-top:7px; }
+  .matrix{ margin-top:8px; }
+  .matrix th,.matrix td{ padding:4.5px 4px; font-size:11px; }
+  .badge{ font-size:9.5px; padding:4px 8px; }
+  .pricelist{ break-inside:avoid; page-break-inside:avoid; }
+  .pricelist .pl-row{ padding:10px 16px; }
+  .pricelist .pl-name{ font-size:14.5px; }
+  .pricelist .pl-desc{ font-size:12px; }
+  .pricelist .pl-price .amt{ font-size:19px; }
   a{ text-decoration:none; }
 }
 </style>
@@ -617,7 +647,7 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
         <div class="cat-head__text">
           <div class="cat-kicker"><b>06</b> Categoria</div>
           <h2>Gráfica Offset</h2>
-          <p>Tiragens maiores com qualidade gráfica: cartões couché com verniz UV e panfletos. Prazo de 7 a 15 dias úteis · arte não inclusa.</p>
+          <p>Cartões de visita em couché com verniz UV e cartão fosco com verniz localizado. Prazo de 7 a 15 dias úteis · arte não inclusa.</p>
         </div>
       </div>
     </div>
@@ -659,6 +689,26 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
         </div>
         <div class="note"><b>Arredondar cantos</b> (2 ou 4): R$ 39,90</div>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== 6B. GRÁFICA OFFSET · PANFLETOS =================== -->
+<section class="cat" id="offset-panfletos">
+  <div class="container">
+    <div class="cat-head">
+      <div class="cat-head__rule"><span></span></div>
+      <div class="cat-head__main">
+        <div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+        <div class="cat-head__text">
+          <div class="cat-kicker"><b>06</b> Gráfica Offset</div>
+          <h2>Panfletos</h2>
+          <p>Couché 70g e 90g, sem verniz. Tiragens de 1.000 e 2.500 unidades. Prazo de 7 a 15 dias úteis · arte não inclusa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid two">
 
       <div class="card">
         <div class="top"><h3>Panfletos · Couché 70g</h3><span class="badge sub">1.000 un.</span></div>
