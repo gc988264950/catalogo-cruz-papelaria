@@ -204,9 +204,30 @@ footer .legal{border-top:1px solid #2a2a2c;margin-top:38px;padding-top:22px;font
   .grid,.grid.two{grid-template-columns:1fr}
 }
 @media print{
-  .topbar,.toc,.menu-toggle,.fab,.cta .btns,header.site{position:static}
-  .card{break-inside:avoid;box-shadow:none}
-  body{background:#fff}
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  @page{ size:A4; margin:11mm; }
+  .toc,.fab,.menu-toggle,.cta .btns{ display:none !important; }
+  header.site{ position:static; box-shadow:none; }
+  body{ background:#fff; }
+
+  /* ===== GRID 2 COLUNAS QUE PREENCHE CADA FOLHA ===== */
+  .hero{ break-after:avoid; page-break-after:avoid; }
+  .hero .container{ padding-block:22px 16px; }
+  section.cat{ break-before:auto; page-break-before:auto; padding:6mm 0 0; }
+  section.cat:first-of-type{ padding-top:2mm; }
+  .cta{ break-before:auto; }
+
+  /* cabeçalho da categoria nunca fica sozinho no rodapé */
+  .cat-head{ break-inside:avoid; page-break-inside:avoid; break-after:avoid; page-break-after:avoid; margin-bottom:12px; }
+
+  /* 2 colunas em todas as categorias, compactas */
+  .grid, .grid.two{ display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+  .card{ break-inside:avoid; page-break-inside:avoid; box-shadow:none !important; padding:16px; }
+  .matrix,.cta{ break-inside:avoid; page-break-inside:avoid; }
+  /* lista de novidades flui por linha, enchendo a folha */
+  .pricelist{ break-inside:auto; }
+  .pricelist .pl-row{ break-inside:avoid; page-break-inside:avoid; padding:13px 18px; }
+  a{ text-decoration:none; }
 }
 </style>
 </head>
